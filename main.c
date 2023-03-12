@@ -3,46 +3,54 @@
 #include <string.h>
 
 #include "displayWord.c"
-#include "wordList.c"
+// #include "wordList.c"
 #include "utils.c"
-// this is the code for a word guessing game
+// this is the code for a word guessing game1
+
 // all words are declared in easy words
+char easyWords[][10] = {"Happy", "Sad", "Glad"};
 
 int main()
 {
-    printf("Hello world!\n");
-    printf("words %s", easyWords[2]);
+    printf("words %s \n", easyWords[0]);
+    char guessedWord[10] = "";
 
     // start the program while user says play
     int play = 0;
-    // do
+    do
     // {
-    printf("Press 1 to start the game \n");
-    scanf("%d", &play);
+    //     printf("Press 1 to start/continue the game \n");
+    //     scanf("%d", &play);
 
-    // select a word from the word list
-    char greetings[] = "Hello World!";
+    //     char *activeWord = easyWords[0];
+        char guessedLetter;
+        // printf("%s\n", activeWord);
 
-    // char activeWord[] = easyWords[1];
+        printf("Guess a letter in the word\n");
+        scanf("%c", &guessedLetter);
+        // guessedLetter = getchar();
+        // printf("you entered %c\n", guessedLetter);
 
-    char *activeWord = easyWords[0];
-    char guessWord[] = "";
-    char guessedLetter[] = "";
-    printf("%s\n", activeWord);
+        // int result = checkIfLetterInWord(guessedLetter, &activeWord);
+        // // printf("%d is the result of the function \n", result);
+        // if (result == 1)
+        // {
+        //     strncat(guessedWord, &guessedLetter, 1);
+        //     printf("%s  \n", guessedWord);
+        // }
+        // else{
+        //     printf("%s is the guessed Word \n \n ", guessedWord);
 
-    printf("Guess a letter in the word\n");
-    scanf("%s", &guessedLetter);
-    printf("you entered %s\n", guessedLetter);
+        // }
+        // // printf("%d", strcmp(guessedWord, activeWord));
+        // if (strcmp(guessedWord, activeWord) == 0)
+        // {
+        //     printf("YOU HAVE SUCCESSFULLY GUESSED THE WORD\n");
+        // }
+        // else { 
+        //     printf("Keep going bro, you ve got htis\n");
+        // }
 
-    int result = checkIfLetterInWord(guessedLetter, guessWord);
-    printf("%d\n", result);
-    // printf("%s", guessWord);
-
-    // } while (play == 1);
-
-    printf("\n");
-    printf("\n");
-
-    printf("\n");
+    } while (play == 1);
     return 0;
 }
