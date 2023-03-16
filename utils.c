@@ -1,12 +1,20 @@
 #include <string.h>
 #include <stdio.h>
 
-int checkIfLetterInWord(char letter, char *word[])
-{
+struct RValues {
+    int valueFound;
+    int index;
+};
 
+struct RValues checkIfLetterInWord(char letter, char *word[])
+{
+    struct RValues r;
+    r.index = 0;
+    r.valueFound = 0;
     // printf("%s is the word of the string\n", *word);
     int length = strlen(*word);
-    printf("%c is the letter that was entered", letter);
+    // printf("%c is the letter that was entered", letter);
+
 
     for (int i = 0; i < strlen(*word); i++)
     {
@@ -18,9 +26,12 @@ int checkIfLetterInWord(char letter, char *word[])
         if (*(word[0]+i) == letter)
         {
             printf("\n found letter \n \n");
-            return 1;
+            r.valueFound =1;
+            r.index = i;
+            return r;
         }
      
     };
-    return 0;
+ 
+    return r;
 }
