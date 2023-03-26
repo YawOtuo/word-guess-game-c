@@ -8,57 +8,66 @@
 // this is the code for a word guessing game1
 
 // all words are declared in easy words
-char easyWords[][10] = {"Happy", "Sad", "Glad"};
+char easyWords[][10] = {"Happy", "Sad", "Glad", "Shabalala"};
 
 int main()
 {
-    printf("words %s \n", easyWords[0]);
-    char guessedWord[10] = "__________";
-    char guessedLetter = ' ' ;
+    // printf("words %s \n", easyWords[0]);
+    char guessedWord[10] = "_________";
+    char guessedLetter = ' ';
 
-    // start the program while user says play
-
-    
     int play = 1;
+    int selection;
+    int score = 0;
+
+    // switch (selection)
+    // {
+    // //check your score/
+    // // change difficulty
+    // // quit
+    // case /* constant-expression */:
+    //     /* code */
+    //     break;
+
+    // default:
+    //     break;
+    // }
 
     do
     {
 
-        // printf("Press 1 to start/continue the game \n");
-        // scanf("%d", &play);
-
-        char *activeWord = easyWords[1];
-
-        // printf("%s\n", activeWord);
-
+        char *activeWord = easyWords[3];
         printf("Guess a letter in the word\n");
 
         scanf(" %c", &guessedLetter);
-        printf("you entered %c\n", guessedLetter);
 
         struct RValues result = checkIfLetterInWord(guessedLetter, &activeWord);
         if (result.valueFound == 1)
-        {
-            printf("index is %d\n", result.index);
-            // strncat(guessedWord, &guessedLetter, 1);
-            guessedWord[result.index] = guessedLetter;
 
-            printf("%s  \n", guessedWord);
+        {
+            printf("\n CORRECT \n ");
+            for (int i = 0; i < result.indexLength; i++)
+            {
+                score += 5;
+                guessedWord[result.index[i]] = guessedLetter;
+            }
+            printf("%s \n", guessedWord);
+            printf("SCORE: %d \n \n", score);
         }
         else
         {
-            printf("Sorry pleae try again \n\n");
+            printf("Sorry please try again \n\n");
         }
 
         if (strcmp(guessedWord, activeWord) == 0)
         {
             printf("YOU HAVE SUCCESSFULLY GUESSED THE WORD\n");
+            printf("SCORE: %d \n \n", score);
         }
         else
         {
             printf("Keep going bro, you ve got htis\n");
         }
-
 
     } while (play == 1);
     return 0;
