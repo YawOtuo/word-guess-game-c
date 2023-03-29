@@ -3,36 +3,63 @@
 #include <string.h>
 
 #include "displayWord.c"
-// #include "wordList.c"
+#include "wordList.c"
 #include "utils.c"
 // this is the code for a word guessing game1
 
 // all words are declared in easy words
-char easyWords[][10] = {"Happy", "Sad", "Glad", "Shabalala"};
 
 int main()
 {
     // printf("words %s \n", easyWords[0]);
-    char guessedWord[10] = "_________";
+    char guessedWord[20] = "__________";
     char guessedLetter = ' ';
+    char userName[10] = "";
 
     int play = 1;
     int selection;
     int score = 0;
+start:
 
-    // switch (selection)
-    // {
-    // //check your score/
-    // // change difficulty
-    // // quit
-    // case /* constant-expression */:
-    //     /* code */
-    //     break;
+    printf("\n ****************************************************\n");
+    printf("Hello. Welcome to group 19 C Programming Assignment. \n This is a WORD GUESSING GAME \n");
+    printf("\n ****************************************************\n");
 
-    // default:
-    //     break;
-    // }
+    printf("\t 1. Start game \n \t 2. Check your score \n ");
+    char userEntry = ' ';
 
+    scanf("%c", &userEntry);
+    switch (userEntry) /* code */
+    {
+    case '1':
+        printf("\n Great your game is about to begin \n ");
+        printf("To ask for a hint type 4 \n");
+        printf("To quit press 0 \n");
+        printf("\nType your name to start \n");
+
+        scanf(" %s", userName);
+        switch (*userName)
+        {
+        case '4':
+            goto begin;
+            break;
+
+        default:
+            break;
+        }
+        break;
+
+    case '2':
+        printf("\n Your score is %d \n", score);
+        printf("Press 1 to go back \n");
+        goto start;
+        break;
+    default:
+        goto start;
+        break;
+    }
+
+begin:
     do
     {
 
@@ -63,10 +90,21 @@ int main()
         {
             printf("YOU HAVE SUCCESSFULLY GUESSED THE WORD\n");
             printf("SCORE: %d \n \n", score);
+            goto replay;
         }
-        else
+
+    replay:
+        printf("Congratulations %s, you have succesfully guessed the word\n", userName);
+        printf("Press 1 to play again");
+        scanf(" %c", &userEntry);
+        switch (userEntry)
         {
-            printf("Keep going bro, you ve got htis\n");
+        case '1':
+            goto start;
+            break;
+
+        default:
+            break;
         }
 
     } while (play == 1);

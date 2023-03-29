@@ -1,2 +1,2 @@
 
-char easyWords[] [10] = { "Happy", "Sad", "Glad"};
+char easyWords[] [20] = { "happy", "sad", "glad", "malfunction"};
