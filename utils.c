@@ -8,20 +8,19 @@ struct RValues
     int index[5];
 };
 
-struct RValues checkIfLetterInWord(char letter, char *word[])
+struct RValues checkIfLetterInWord(char letter, char *word)
 {
     struct RValues r;
     r.index[0] = 0;
     r.valueFound = 0;
-    // printf("%s is the word of the string\n", *word);
-    int length = strlen(*word);
-    // printf("%c is the letter that was entered", letter);
+    int length = strlen(word);
     int counter = 0;
+    // printf("word is %c", *(word + 2));
 
-    for (int i = 0; i < strlen(*word); i++)
+    for (int i = 0; i < strlen(word); i++)
     {
 
-        if (*(word[0] + i) == letter)
+        if (*(word + i) == letter)
         {
             r.valueFound = 1;
             r.index[counter] = i;
@@ -31,4 +30,23 @@ struct RValues checkIfLetterInWord(char letter, char *word[])
     };
 
     return r;
+}
+
+void generateDashes(char *word, char *guessedWords)
+{
+    for (int i = 0; i < strlen(word); i++)
+    {
+        *(guessedWords + i) = '_';
+    }
+}
+
+void provideClue(char *word, char *guessedWords)
+{
+    for (int i = 0; i < strlen(word); i++)
+    {
+        if (*(word+i) != *(guessedWords+i)){
+            printf("Clue: %c\n", *(word+i));
+            return 1;
+        }
+    }
 }
